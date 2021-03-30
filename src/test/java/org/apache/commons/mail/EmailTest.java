@@ -227,6 +227,13 @@ public class EmailTest {
 		assertEquals(socketConnection, email.getSocketConnectionTimeout());
 		
 	}
+//	/*******************************************Test setFrom(String) function done 100% */
+	
+	@Test
+	public void testSetFrom() throws Exception{
+		email.setFrom("Jinal@gmail.com", "");
+		
+	}
 
 	
 }
