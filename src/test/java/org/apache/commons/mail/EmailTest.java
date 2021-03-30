@@ -192,6 +192,24 @@ public class EmailTest {
 		
 		assertEquals(hostName, "localhost");
 	}
+//	/*******************************************Test getMailSession() function done 100% */
+	@Test
+	public void testGetMailSession_shouldThrowException_whenhostNameIsEmptry() throws EmailException {
+		this.email.setSmtpPort(587);
+		this.email.setFrom("a@b.com");
+		this.email.addTo("c@d.com");
+		this.email.setSubject("test mail"); 
+		this.email.setCharset("ISO-8859-1");
+		this.email.setContent("test content", "text/plain");
+		final MimeMessage msg = email.getMimeMessage();
+		this.email.message = msg;
+		
+		try {
+			this.email.getMailSession();
+		} catch (Exception e) {
+			assertNotNull(e);
+		}
+	}
 	
 
 	
