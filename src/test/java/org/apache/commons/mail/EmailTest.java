@@ -210,7 +210,14 @@ public class EmailTest {
 			assertNotNull(e);
 		}
 	}
-	
+	//	/*******************************************Test getSentDate() function done 100% */
+	@Test
+	public void testGetSetSentDate() {
+		 Date date = Calendar.getInstance().getTime();
+		 email.setSentDate(date);
+         assertEquals(date, email.getSentDate());
+	}
+
 
 	
 }
