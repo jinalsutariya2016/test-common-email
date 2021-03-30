@@ -59,6 +59,20 @@ public class EmailTest {
 			assertEquals(e.getMessage(), "Address List provided was invalid");
 		}
 	}
+		
+	
+//	/*******************************************Test addCc (String email) function 100% done */ 
+	@Test
+	public void testAddCc() throws Exception{
+		for(final String emailAddress : TEST_EMAILS) {
+			email.addCc(emailAddress);
+			
+		}
+		
+		assertEquals(3, email.getCcAddresses().size());
+	}
+	
+	
 	
 }
  
