@@ -95,6 +95,61 @@ public class EmailTest {
 		
 		
 	}
+//	/*******************************************Test buildMimeMessage () function done 73.3% done*/
+	@Test
+	public void testBuildMimeMessage()throws EmailException{
+		email.setHostName("Localhost");
+		email.setSmtpPort(1234);
+		email.setFrom("Jinal@gmail.com");
+		email.addTo("sutariya@gmail.com");
+		email.setSubject("Test mail");
+		email.setCharset("ISO-8859-1");
+		email.setContent("test content", "text/plain");
+		email.addCc("jinal@gmail.com");
+		email.addBcc("jinal@gmail.com");
+		email.addHeader("jinal", "Sutariya");
+		email.addReplyTo("jinal@gmail.com", "Jinal sutariya");
+		email.buildMimeMessage();
+		
+	}
+	
+	@Test
+	public void testBuildMimeMessage_shouldThrowIllegalStateException_whenMessageIsNotNull() throws EmailException {
+		this.email.setHostName("localhost");
+		this.email.setSmtpPort(587);
+		this.email.setFrom("Jinal@gmail.com");
+		this.email.addTo("sutariya@gmail.com");
+		this.email.setSubject("test mail"); 
+		this.email.setCharset("ISO-8859-1");
+		this.email.setContent("test content", "text/plain");
+		final MimeMessage msg = email.getMimeMessage();
+		this.email.message = msg;
+		
+		try {
+			this.email.buildMimeMessage();
+		} catch (Exception e) {
+			// TODO: handle exception
+			assertNotNull(e);
+			assertEquals(e.getMessage(), "The MimeMessage is already built.");
+		}
+		
+	}
+	
+	@Test
+	public void testBuildMimeMessage_shouldCallSetSubject_whenCharsetisEmpty() throws EmailException {
+		this.email.setHostName("localhost");
+		this.email.setSmtpPort(587);
+		this.email.setFrom("a@b.com");
+		this.email.addTo("c@d.com");
+		this.email.setSubject("test mail"); 
+		this.email.setContent("test content", "text/plain");
+		this.email.message = null;
+		
+		this.email.buildMimeMessage();
+		
+		assertEquals(this.email.subject, "test mail");
+	}
+	
 
 	
 }
