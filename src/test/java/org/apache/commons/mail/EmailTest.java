@@ -218,6 +218,15 @@ public class EmailTest {
          assertEquals(date, email.getSentDate());
 	}
 
+//	/*******************************************Test getSocketConnection() function done 100% */
+	
+	@Test
+	public void testGestScketConnectionTimeout() {
+		int socketConnection = 0;
+		email.setSocketConnectionTimeout(socketConnection);
+		assertEquals(socketConnection, email.getSocketConnectionTimeout());
+		
+	}
 
 	
 }
