@@ -84,6 +84,17 @@ public class EmailTest {
 	     {
 	        email.addHeader("Jinal", "");
     }
+//	/*******************************************Test addReplyTo (String email, String name) function done 100% */
+	
+	@Test
+	public void testAddReplyTo() throws Exception{
+		for(final String address : TEST_EMAILS) {
+			email.addReplyTo(address);
+		}
+		assertEquals(TEST_EMAILS.length, email.getReplyToAddresses().size());
+		
+		
+	}
 
 	
 }
